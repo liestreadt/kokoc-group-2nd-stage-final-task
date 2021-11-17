@@ -1,19 +1,18 @@
-const {src, dest, watch, series, parallel} = require('gulp');
+const {src, dest, watch, series, parallel, task} = require('gulp');
 const del = require('gulp-clean');
 const browserSync = require('browser-sync').create();
 const reload = browserSync.reload;
 
-const copy = () => {
+task('copy', () => {
     return src('src/**/*.*')
     .pipe(dest('dist'))
-}
-
-const clean = () => {
+});
+task('clean', () => {
     return src('dist/**/*')
     .pipe(del());
-}
+});
 
-const server = (done) => {
+task('server', (done) => {
     browserSync.init({
       watch: true,
       server: {
@@ -21,11 +20,11 @@ const server = (done) => {
       }
     });
     done();
-};
+});
 
 const watchers = (done) => {
-    watch('src/**/*.html').on('all', series(copy, reload));
+    watch('src/**/*.html').on('all', series('copy', reload));
     done();
 }
 
-exports.default = series(clean, copy, parallel(server, watchers));
+task("default", series('clean', 'copy', parallel('server', watchers)));
