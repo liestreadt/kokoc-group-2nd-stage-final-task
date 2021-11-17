@@ -1,0 +1,16 @@
+{
+  "name": "my-first-gulp-project-2",
+  "version": "1.0.0",
+  "description": "learning how to work with gulp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vladik",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.27.7",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0"
+  }
+}
