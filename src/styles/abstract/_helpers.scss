@@ -1,0 +1,7 @@
+@function px2em($size) {
+    @return ($size / $standard) * 1em;
+}
+
+@function px2rem($size) {
+    @return ($size / $standard) * 1rem;
+}
