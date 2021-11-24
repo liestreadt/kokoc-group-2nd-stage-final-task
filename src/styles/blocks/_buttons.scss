@@ -63,10 +63,17 @@
 @mixin makeButtonsSize {
     @each $status, $size in $sizePallete {
         &-#{$status} {
-            @include makebutton($blue, $white, $size, 10px)
+            padding: {
+                left: px2em(1.2 * $size);
+                right: px2em(1.2 * $size);
+                top: px2em(0.5 * $size);
+                bottom: px2em(0.5 * $size);
+            }
         }
     }
 }
+
+
 
 .btn5-active {
     @include makebutton($blue, $white, $extralarge, 30px)
@@ -76,16 +83,18 @@
     @include makebutton($grey, $black, $extralarge, 30px)
 }
 
-.btn6-color {
+.button {
     @include makeThemeButtons
 }
 
-.btn6-size {
+.button {
     @include makeButtonsSize
 }
 
 .btn7 {
     @include makebutton(red, $white, $extralarge, 15px)
 }
+
+
 
 

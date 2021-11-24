@@ -2,6 +2,7 @@ const {src, dest, watch, series, parallel, task} = require('gulp');
 const del = require('gulp-clean');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
+const pug = require('gulp-pug');
 const sassGlob = require('gulp-sass-glob');
 const autoprefixer = require('gulp-autoprefixer');
 const px2rem = require('gulp-smile-px2rem');
@@ -12,10 +13,11 @@ const reload = browserSync.reload;
 
 sass.compiler = require('node-sass');
 
-task('copy', () => {
+task('copyHTML', () => {
     return src('src/**/*.html')
     .pipe(dest('dist'))
 });
+
 task('clean', () => {
     return src('dist/**/*')
     .pipe(del());
@@ -38,19 +40,28 @@ task('compileScss', () => {
   .pipe(px2rem())
   .pipe(autoprefixer({ cascade: false }))
   .pipe(gcmq())
-  .pipe(cleanCSS({debug: true}, (details) => {
-    console.log(`${details.name}: ${details.stats.originalSize}`);
-    console.log(`${details.name}: ${details.stats.minifiedSize}`);
-  }))
+  // .pipe(cleanCSS({debug: true}, (details) => {
+  //   console.log(`${details.name}: ${details.stats.originalSize}`);
+  //   console.log(`${details.name}: ${details.stats.minifiedSize}`);
+  // }))
   .pipe(sourcemaps.write())
   .pipe(dest('./dist/styles'))
   .pipe(browserSync.stream());
 });
 
+task('compilePug', () => {
+  return src('src/pug/pages/*.pug')
+  .pipe(pug({
+    pretty: true,
+  }))
+  .pipe(dest('dist'));
+});
+
 const watchers = (done) => {
-    watch('src/**/*.html').on('all', series('copy', reload));
+    // watch('src/**/*.html').on('all', series('copyHTML', reload));
     watch('src/**/*.scss', series('compileScss'));
+    watch('src/**/*.pug', series('compilePug'));
     done();
 }
 
-task("default", series('clean', 'copy', 'compileScss', parallel('server', watchers)));
+task("default", series('clean', 'compilePug', 'compileScss', parallel('server', watchers)));
