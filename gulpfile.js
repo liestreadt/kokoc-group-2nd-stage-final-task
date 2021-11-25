@@ -10,8 +10,6 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const reload = browserSync.reload;
 
-sass.compiler = require('node-sass');
-
 task('copy', () => {
     return src('src/**/*.html')
     .pipe(dest('dist'))
@@ -21,13 +19,14 @@ task('clean', () => {
     .pipe(del());
 });
 
-task('server', () => {
+task('server', (done) => {
     browserSync.init({
       watch: true,
       server: {
         baseDir: './dist'
       }
     });
+    done();
 });
 
 task('compileScss', () => {
@@ -36,7 +35,7 @@ task('compileScss', () => {
   .pipe(sassGlob())
   .pipe(sass().on('error', sass.logError))
   .pipe(px2rem())
-  .pipe(autoprefixer({ cascade: false }))
+  .pipe(autoprefixer())
   .pipe(gcmq())
   .pipe(cleanCSS({debug: true}, (details) => {
     console.log(`${details.name}: ${details.stats.originalSize}`);
@@ -53,4 +52,5 @@ const watchers = (done) => {
     done();
 }
 
-task("default", series('clean', 'copy', 'compileScss', parallel('server', watchers)));
+task("build", series('clean', 'copy', 'compileScss'));
+task("start", series('build', parallel('server', watchers)));

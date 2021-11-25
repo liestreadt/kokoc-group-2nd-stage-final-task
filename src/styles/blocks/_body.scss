@@ -1,0 +1,19 @@
+
+body{
+    background: $red;
+
+    @media (max-width: 900px) {
+        background-color: $lime;
+    }
+}
+
+.server{
+    background-color: $blue;
+    color: $black;
+    font-size: px2em($large);
+    width: 900px;
+
+    @media (max-width: 900px) {
+        background-color: $yellow;
+    }
+}

@@ -4,7 +4,9 @@
   "description": "learning how to work with gulp",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "start": "gulp start"
   },
   "author": "Vladik",
   "license": "MIT",
@@ -20,7 +22,6 @@
     "gulp-sass-glob": "^1.1.0",
     "gulp-smile-px2rem": "^0.1.0",
     "gulp-sourcemaps": "^3.0.0",
-    "node-sass": "^6.0.1",
     "sass": "^1.43.4"
   },
   "dependencies": {
