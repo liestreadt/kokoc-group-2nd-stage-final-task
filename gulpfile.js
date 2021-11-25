@@ -13,13 +13,13 @@ const reload = browserSync.reload;
 
 sass.compiler = require('node-sass');
 
-task('copyHTML', () => {
-    return src('src/**/*.html')
-    .pipe(dest('dist'))
+task('copyImg', () => {
+    return src('src/images/*.*')
+    .pipe(dest('dist/images/'))
 });
 
 task('clean', () => {
-    return src('dist/**/*')
+    return src('dist/**/*.*')
     .pipe(del());
 });
 
@@ -64,4 +64,4 @@ const watchers = (done) => {
     done();
 }
 
-task("default", series('clean', 'compilePug', 'compileScss', parallel('server', watchers)));
+task("default", series('clean', 'copyImg', 'compilePug', 'compileScss', parallel('server', watchers)));

@@ -1,28 +1,5 @@
-%button {
-    width: 200px;
-    height: 100px;
-    font-size: $extralarge;
-    border-radius: 30px;
-}
-
-.btn4-active {
-    @extend %button;
-    color: $white;
-    background-color: $blue
-}
-
-// .btn4-active {
-//     @extend %button;
-//     color: $white;
-//     background-color: nth($themePallete, 3);
-// }
-
-.btn4-disabled {
-    @extend %button;
-    background-color: $grey;
-}
-
 @mixin makebutton($bg-color, $color, $f_size, $radius) {
+
     background-color: $bg-color;
     color: $color;
     
@@ -73,16 +50,6 @@
     }
 }
 
-
-
-.btn5-active {
-    @include makebutton($blue, $white, $extralarge, 30px)
-}
-
-.btn5-disabled {
-    @include makebutton($grey, $black, $extralarge, 30px)
-}
-
 .button {
     @include makeThemeButtons
 }
@@ -90,11 +57,6 @@
 .button {
     @include makeButtonsSize
 }
-
-.btn7 {
-    @include makebutton(red, $white, $extralarge, 15px)
-}
-
 
 
 
