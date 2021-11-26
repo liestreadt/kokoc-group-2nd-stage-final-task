@@ -1,0 +1,70 @@
+.button-menu {
+    width: 555px;
+
+    &:hover {
+        width: 955px;
+        .drop-menu {
+            display: block;
+        }
+    }
+
+    .drop-menu {
+        display: none;
+        background-color: $white;
+        width: 500px;
+        height: 600px;
+        margin: 10px;
+        margin-left: 20px;
+        border-radius: 15px;
+
+        .drop-menu-list {
+            position: absolute;
+            left: 50px;
+            padding-left: 30px;
+
+            .drop-menu-elem {
+                &:hover {
+                    .sub-drop-menu-list {
+                        display: block;
+                        height: 569px;
+                        width: 400px;
+                        background-color: rgb(230, 230, 230);
+                        top: -31px;
+                    }
+                }
+                display: flex;
+            }
+
+            .sub-drop-menu-list {
+                padding-top: 31px;
+                display: none;
+                position: absolute;
+                margin-left: 420px;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+        }
+
+        .drop-menu-link {
+            color: $black;
+        }
+
+        .sub-drop-menu-link {
+            color: rgb(134, 134, 134);
+        }
+
+        li {
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: sans-serif;
+            list-style-type: none;
+        }
+
+        a {
+            text-decoration: none;
+            &:hover {
+                color: $red;
+            }
+        }
+    }
+}

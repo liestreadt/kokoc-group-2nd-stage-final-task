@@ -11,8 +11,6 @@ const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
 const reload = browserSync.reload;
 
-sass.compiler = require('node-sass');
-
 task('copyImg', () => {
     return src('src/images/*.*')
     .pipe(dest('dist/images/'))
@@ -23,13 +21,14 @@ task('clean', () => {
     .pipe(del());
 });
 
-task('server', () => {
+task('server', (done) => {
     browserSync.init({
       watch: true,
       server: {
         baseDir: './dist'
       }
     });
+    done();
 });
 
 task('compileScss', () => {
@@ -38,12 +37,12 @@ task('compileScss', () => {
   .pipe(sassGlob())
   .pipe(sass().on('error', sass.logError))
   .pipe(px2rem())
-  .pipe(autoprefixer({ cascade: false }))
+  .pipe(autoprefixer())
   .pipe(gcmq())
-  // .pipe(cleanCSS({debug: true}, (details) => {
-  //   console.log(`${details.name}: ${details.stats.originalSize}`);
-  //   console.log(`${details.name}: ${details.stats.minifiedSize}`);
-  // }))
+  .pipe(cleanCSS({debug: true}, (details) => {
+    console.log(`${details.name}: ${details.stats.originalSize}`);
+    console.log(`${details.name}: ${details.stats.minifiedSize}`);
+  }))
   .pipe(sourcemaps.write())
   .pipe(dest('./dist/styles'))
   .pipe(browserSync.stream());
@@ -64,4 +63,6 @@ const watchers = (done) => {
     done();
 }
 
-task("default", series('clean', 'copyImg', 'compilePug', 'compileScss', parallel('server', watchers)));
+task("build", series('clean', 'copyImg', 'compilePug', 'compileScss'));
+task("start", series('build', parallel('server', watchers)));
+task("default", series('build', 'start'));
