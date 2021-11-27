@@ -57,7 +57,6 @@ task('compilePug', () => {
 });
 
 const watchers = (done) => {
-    // watch('src/**/*.html').on('all', series('copyHTML', reload));
     watch('src/**/*.scss', series('compileScss'));
     watch('src/**/*.pug', series('compilePug'));
     done();
