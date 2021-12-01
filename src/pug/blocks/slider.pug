@@ -1,0 +1,13 @@
+extends ../mixins/mainSlider
+
+block prepend mainSlider
+    -
+        var images = [
+            'https://placeimg.com/800/600/people',
+            'https://placeimg.com/640/480/people',
+            'https://placeimg.com/800/600/animals',
+        ]
+
+block append mainSlider
+    div.slider
+        +createSlider(images)

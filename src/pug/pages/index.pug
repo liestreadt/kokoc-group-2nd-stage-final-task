@@ -2,3 +2,10 @@ extends ../layout/baseLayout
 
 block prepend head 
     - var pageTitle= 'Main page'
+
+block cards
+    div.cards
+        include ../blocks/cards
+
+block slider
+    include ../blocks/slider

@@ -1,0 +1,7 @@
+block mainSlider
+    mixin createSlider(img)
+        div.container
+            div.main-slider
+                each srcLink in img
+                    div.main-slier__item
+                        img(class='Img' src=srcLink alt='Image')
