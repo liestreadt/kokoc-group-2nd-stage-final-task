@@ -33,7 +33,6 @@
     padding: 0.5em 1.2em;
 
     font: {
-        family: Georgia;
         size: $extralarge;
     }
     border: { 
@@ -53,7 +52,6 @@
     @each $status, $size in $sizePallete {
         &-#{$status} {
             font: {
-                family: Georgia;
                 size: $size;
             }
         }

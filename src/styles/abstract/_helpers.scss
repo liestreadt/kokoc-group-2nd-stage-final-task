@@ -1,8 +1,6 @@
 @use "sass:math";
 
-$browser-context: 16px;
-
-@function px2em($pixels, $context: $browser-context) {
+@function px2em($pixels, $context) {
     @if (unitless($pixels)) {
         $pixels: $pixels * 1px;
       }
@@ -14,7 +12,7 @@ $browser-context: 16px;
     @return math.div($pixels, $context) * 1em;
 }
 
-@function px2rem($pixels, $context: $browser-context) {
+@function px2rem($pixels) {
 
     @return  math.div($pixels, $standard) * 1rem;
 }
