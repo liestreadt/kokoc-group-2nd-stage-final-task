@@ -1,0 +1,81 @@
+%button {
+    width: 200px;
+    height: 100px;
+    font-size: $extralarge;
+    border-radius: 30px;
+}
+
+.btn4 {
+    @extend %button;
+    color: $white;
+    background-color: $blue
+}
+
+.btn4:disabled {
+    @extend %button;
+    background-color: $grey;
+}
+
+@mixin makebutton($bg-color, $color, $radius) {
+    background-color: $bg-color;
+    color: $color;
+    
+    &:hover {
+        background-color: lighten($bg-color, 10%);
+        cursor: pointer;
+    }
+
+    &:disabled {
+            background-color: darken($bg-color, 30%);
+            cursor: default;      
+    }          
+    
+    padding: 0.5em 1.2em;
+
+    font: {
+        size: $extralarge;
+    }
+    border: { 
+        radius: $radius;
+    }
+}
+
+@mixin makeThemeButtons {
+    @each $status, $color in $themePallete {
+        &-#{$status} {
+            @include makebutton($color, $white, 30px)
+        }
+    }
+}
+
+@mixin makeButtonsSize {
+    @each $status, $size in $sizePallete {
+        &-#{$status} {
+            font: {
+                size: $size;
+            }
+        }
+    }
+}
+
+.btn5 {
+    @include makebutton($blue, $white, 30px)
+}
+
+.btn5:disabled {
+    @include makebutton($grey, $black, 30px)
+}
+
+.btn6-color {
+    @include makeThemeButtons
+}
+
+.btn6-size {
+    @include makeButtonsSize
+}
+
+.btn7 {
+    @include makebutton(red, $white, 15px)
+}
+
+
