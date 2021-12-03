@@ -24,8 +24,5 @@
     "gulp-smile-px2rem": "^0.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "sass": "^1.43.4"
-  },
-  "dependencies": {
-    "set-default-browser": "^1.1.2"
   }
 }
