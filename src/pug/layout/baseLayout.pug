@@ -1,9 +1,11 @@
 doctype html
+
+include ../blocks/variables
+include ../mixins/button
+include ../mixins/card
+
 html(lang="en")
     include ../blocks/head
+
     body
-        include ../blocks/buttons
-        br
-        include ../blocks/main
-        br
-        include ../blocks/cards
+        block main

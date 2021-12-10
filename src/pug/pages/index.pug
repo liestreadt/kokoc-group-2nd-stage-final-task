@@ -1,4 +1,21 @@
 extends ../layout/baseLayout
 
-block prepend head 
-    - var pageTitle= 'Main page'
+block main
+    div.main
+        h1 index Text
+    div.button
+        +button(message, 'danger', 'big', false)
+    div.cards
+        if (cards)
+            each item in cards 
+                +card(item.photo, item.name, item.desc, item.price)
+                +card(item.photo, item.name, item.desc, item.price)
+                +card(item.photo, item.name, item.desc, item.price)
+                +card(item.photo, item.name, item.desc, '')
+                +card(item.photo, item.name, item.desc, '')
+                +card(item.photo, item.name, item.desc, '')
+                +card('', item.name, item.desc, item.price)
+                +card('', item.name, item.desc, item.price)
+                +card('', item.name, item.desc, item.price)
+                +card('', item.name, item.desc, '')
+                

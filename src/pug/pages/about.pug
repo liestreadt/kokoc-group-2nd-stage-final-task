@@ -1,13 +1,5 @@
 extends ../layout/baseLayout
 
-block prepend head 
-    - var pageTitle= 'Title about something ...'
-
 block main
     div.main
         h1 Message about something so important, that I forget about what :/
-
-block cards
-    div.cards
-        include ../mixins/card
-        +createCard('', 'Кирпич керамический Озёрский одинарный', array, '')

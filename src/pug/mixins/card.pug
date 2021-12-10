@@ -1,20 +1,11 @@
--
-  var array = [
-    {key: 'Вид', val: 'пустотелый'},
-    {key: 'Марка', val: 'М150'},
-    {key: 'Поверхность', val: 'рифлёный'},
-    {key: 'Размер', val: '250х120х88'},
-    {key: 'Формат', val: '1,4 НФ'},
-    {key: 'Цвет', val: 'Красный'}
-  ]
 
-mixin createCard(srcImg, name, params, price)
+mixin card(srcImg, name, params, price)
   .card
     .card__image
-      if srcImg==''
-        img(class='Img' src='images/no-img.png' alt='no-Image' )
-      else
+      if (srcImg)
         img(class='Img' src=srcImg alt='Image')
+      else
+        img(class='Img' src='images/no-img.png' alt='no-Image' )  
     .card__info 
       p.card__info__header #{name}
       ul.card__info__list
@@ -24,18 +15,4 @@ mixin createCard(srcImg, name, params, price)
         p.card__info__price Цена по запросу
       else 
         p.card__info__price #{price}
-
--
-  var cards = [
-    {photo: 'images/image-brick.png', price: '11,05 руб/шт'},
-    {photo: 'images/image-brick.png', price: '21,05 руб/шт'},
-    {photo: 'images/image-brick.png', price: '12,05 руб/шт'},
-    {photo: 'images/image-brick.png', price: ''},
-    {photo: 'images/image-brick.png', price: ''},
-    {photo: 'images/image-brick.png', price: ''},
-    {photo: '', price: '22,05 руб/шт'},
-    {photo: '', price: '65,04 руб/шт'},
-    {photo: '', price: '12,21 руб/шт'},
-    {photo: '', price: ''}
-  ]
 
