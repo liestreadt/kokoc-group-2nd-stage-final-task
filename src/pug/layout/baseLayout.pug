@@ -1,13 +1,12 @@
 doctype html
+block variables
+include ../mixins/button
+include ../mixins/card
+
 html(lang="en")
     include ../blocks/head
+
     body
-        include ../blocks/buttons
-        br
-        include ../blocks/main
-        br
-        block slider
-        br
-        block cards
-        br
+        block main
         include ../blocks/footer
+

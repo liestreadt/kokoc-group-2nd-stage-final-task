@@ -1,5 +1,5 @@
-@import './abstract/_variable.scss';
-@import './abstract/_helpers.scss';
+@import './abstract/variable';
+@import './abstract/helpers';
 @import '../js/vendors/slick/slick-theme.css';
 @import '../js/vendors/slick/slick.css';
 @import './blocks/*.scss';
