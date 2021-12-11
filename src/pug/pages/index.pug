@@ -1,5 +1,64 @@
 extends ../layout/baseLayout
 
+block variables
+    - var pageTitle= 'Main page'
+    - var message = 'Click Me HARD!'  
+    -
+        var cards = [
+            {
+                photo: 'images/image-brick.png',
+                name: 'Кирпич керамический Озёрский одинарный',
+                desc: [
+                {key: 'Вид', val: 'пустотелый'},
+                {key: 'Марка', val: 'М150'},
+                {key: 'Поверхность', val: 'рифлёный'},
+                {key: 'Размер', val: '250х120х88'},
+                {key: 'Формат', val: '1,4 НФ'},
+                {key: 'Цвет', val: 'Красный'}
+                ],
+                price: '11,06 руб/шт',
+            },
+            {
+                photo: '',
+                name: 'Кирпич керамический Озёрский одинарный',
+                desc: [
+                {key: 'Вид', val: 'пустотелый'},
+                {key: 'Марка', val: 'М150'},
+                {key: 'Поверхность', val: 'рифлёный'},
+                {key: 'Размер', val: '250х120х88'},
+                {key: 'Формат', val: '1,4 НФ'},
+                {key: 'Цвет', val: 'Красный'}
+                ],
+                price: '11,06 руб/шт',
+            },
+            {
+                photo: 'images/image-brick.png',
+                name: 'Кирпич керамический Озёрский одинарный',
+                desc: [
+                {key: 'Вид', val: 'пустотелый'},
+                {key: 'Марка', val: 'М150'},
+                {key: 'Поверхность', val: 'рифлёный'},
+                {key: 'Размер', val: '250х120х88'},
+                {key: 'Формат', val: '1,4 НФ'},
+                {key: 'Цвет', val: 'Красный'}
+                ],
+                price: '',
+            },
+            {
+                photo: '',
+                name: 'Кирпич керамический Озёрский одинарный',
+                desc: [
+                {key: 'Вид', val: 'пустотелый'},
+                {key: 'Марка', val: 'М150'},
+                {key: 'Поверхность', val: 'рифлёный'},
+                {key: 'Размер', val: '250х120х88'},
+                {key: 'Формат', val: '1,4 НФ'},
+                {key: 'Цвет', val: 'Красный'}
+                ],
+                price: '',
+            },
+        ]
+
 block main
     div.main
         h1 index Text
@@ -9,13 +68,3 @@ block main
         if (cards)
             each item in cards 
                 +card(item.photo, item.name, item.desc, item.price)
-                +card(item.photo, item.name, item.desc, item.price)
-                +card(item.photo, item.name, item.desc, item.price)
-                +card(item.photo, item.name, item.desc, '')
-                +card(item.photo, item.name, item.desc, '')
-                +card(item.photo, item.name, item.desc, '')
-                +card('', item.name, item.desc, item.price)
-                +card('', item.name, item.desc, item.price)
-                +card('', item.name, item.desc, item.price)
-                +card('', item.name, item.desc, '')
-                

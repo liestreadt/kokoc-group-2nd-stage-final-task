@@ -1,4 +1,4 @@
-const {src, dest, watch, series, parallel, task} = require('gulp');
+const {src, dest, watch, series, parallel, task, on} = require('gulp');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
@@ -15,13 +15,12 @@ task('copyImg', () => {
     .pipe(dest('dist/images/'))
 });
 
-task('delImg', async () => {
-  del(['dist/images/*.*']);
-})
+task('delImg', () => {
+  return del(['dist/images/*.*']);
+});
 
-task('clean', async () => {
-  del(['dist/**/*.*']);
-  del(['dist/*/']);
+task('clean', () => {
+  return del('dist');
 });
 
 task('server', (done) => {
@@ -32,6 +31,11 @@ task('server', (done) => {
       }
     });
     done();
+});
+
+task('reload', (done) => {
+  browserSync.reload();
+  done();
 });
 
 task('compileScss', () => {
@@ -59,12 +63,12 @@ task('compilePug', () => {
   .pipe(dest('dist'));
 });
 
-task('watchers', () => {
-  watch('src/images/*', series('copyImg', browserSync.reload));
-  watch('src/**/*.scss', series('compileScss'));
-  watch('src/**/*.pug', series('compilePug'));
+task('watchers', (done) => {
+  watch('src/images/*', series("delImg", "copyImg", 'reload'));
+  watch('src/**/*.scss', series('compileScss', 'reload'));
+  watch('src/**/*.pug', series('compilePug', 'reload'));
+  done();
 });
 
 task("build", series('clean', 'copyImg', 'compilePug', 'compileScss'));
-task("start", series('build', parallel('server', 'watchers')));
-task("default", task('start'));
+task("default", series('build', parallel('server', 'watchers')));
