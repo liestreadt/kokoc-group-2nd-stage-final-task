@@ -1,22 +1,26 @@
-const {src, dest, watch, series, parallel, task} = require('gulp');
-const del = require('gulp-clean');
+const {src, dest, watch, series, parallel, task, on} = require('gulp');
+const del = require('del');
 const browserSync = require('browser-sync').create();
 const sass = require('gulp-sass')(require('sass'));
+const pug = require('gulp-pug');
 const sassGlob = require('gulp-sass-glob');
 const autoprefixer = require('gulp-autoprefixer');
 const px2rem = require('gulp-smile-px2rem');
 const gcmq = require('gulp-group-css-media-queries');
 const cleanCSS = require('gulp-clean-css');
 const sourcemaps = require('gulp-sourcemaps');
-const reload = browserSync.reload;
 
-task('copy', () => {
-    return src('src/**/*.html')
-    .pipe(dest('dist'))
+task('copyImg', () => {
+    return src('src/images/*.*')
+    .pipe(dest('dist/images/'))
 });
+
+task('delImg', () => {
+  return del(['dist/images/*.*']);
+});
+
 task('clean', () => {
-    return src('dist/**/*')
-    .pipe(del());
+  return del('dist');
 });
 
 task('server', (done) => {
@@ -27,6 +31,11 @@ task('server', (done) => {
       }
     });
     done();
+});
+
+task('reload', (done) => {
+  browserSync.reload();
+  done();
 });
 
 task('compileScss', () => {
@@ -46,11 +55,20 @@ task('compileScss', () => {
   .pipe(browserSync.stream());
 });
 
-const watchers = (done) => {
-    watch('src/**/*.html').on('all', series('copy', reload));
-    watch('src/**/*.scss', series('compileScss'));
-    done();
-}
+task('compilePug', () => {
+  return src('src/pug/pages/*.pug')
+  .pipe(pug({
+    pretty: true,
+  }))
+  .pipe(dest('dist'));
+});
 
-task("build", series('clean', 'copy', 'compileScss'));
-task("start", series('build', parallel('server', watchers)));
+task('watchers', (done) => {
+  watch('src/images/*', series("delImg", "copyImg", 'reload'));
+  watch('src/**/*.scss', series('compileScss', 'reload'));
+  watch('src/**/*.pug', series('compilePug', 'reload'));
+  done();
+});
+
+task("build", series('clean', 'copyImg', 'compilePug', 'compileScss'));
+task("default", series('build', parallel('server', 'watchers')));

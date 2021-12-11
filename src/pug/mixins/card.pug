@@ -1,0 +1,18 @@
+
+mixin card(srcImg, name, params, price)
+  .card
+    .card__image
+      if (srcImg)
+        img(class='Img' src=srcImg alt='Image')
+      else
+        img(class='Img' src='images/no-img.png' alt='no-Image' )  
+    .card__info 
+      p.card__info__header #{name}
+      ul.card__info__list
+        each tag in params
+          li= tag.key + ': ' + tag.val
+      if price==''
+        p.card__info__price Цена по запросу
+      else 
+        p.card__info__price #{price}
+

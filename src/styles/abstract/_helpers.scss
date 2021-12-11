@@ -4,7 +4,7 @@
     @if (unitless($pixels)) {
         $pixels: $pixels * 1px;
       }
-    
+
       @if (unitless($context)) {
         $context: $context * 1px;
       }
@@ -13,6 +13,5 @@
 }
 
 @function px2rem($pixels) {
-
-    @return  math.div($pixels, $standard) * 1rem;
+    @return math.div($pixels, $standard) * 1rem;
 }
