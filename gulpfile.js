@@ -12,6 +12,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
 
 task('copyImg', () => {
   return src('src/images/*.*')
@@ -84,24 +85,25 @@ const libs = [
 task('scripts', () => {
   return src(libs)
     .pipe(sourcemaps.init())
-    .pipe(concat('main.min.js'))
+    .pipe(concat('main.js'))
     .pipe(babel({
       presets: ['@babel/env']
     }))
     .pipe(uglify())
+    .pipe(rename('main.min.js'))
     .pipe(sourcemaps.write())
     .pipe(dest('dist/js'));
-})
+});
 
-const watchers = (done) => {
+task('watchers', (done) => {
   watch('src/images/*', series("delImg", "copyImg", 'reload'));
   watch('src/**/*.scss', series('compileScss'));
   watch('src/**/*.pug', series('compilePug', 'reload'));
   watch('src/js/*.js', series('scripts'));
   done();
-}
+});
 
 task("build", series('clean', 'copyImg', 'copyVendors', 'scripts', 'compilePug', 'compileScss'));
-task("default", series('build', parallel('server', watchers)));
+task("default", series('build', parallel('server', 'watchers')));
 
 

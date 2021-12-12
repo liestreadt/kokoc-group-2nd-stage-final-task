@@ -59,16 +59,24 @@ block variables
             },
         ]
 
+    -
+        var images = [
+            'https://placeimg.com/800/600/people',
+            'https://placeimg.com/640/480/people',
+            'https://placeimg.com/800/600/animals',
+        ]
+
 block main
-    div.main
+    .main
         h1 index Text
-    div.button
+    .button
         +button(message, 'danger', 'big', false)
-
-    include ../blocks/slider
-
-    div.cards
+    .slider
+        .container
+            +slider(images)
+    .cards
         if (cards)
             each item in cards
                 +card(item.photo, item.name, item.desc, item.price)
+
 
