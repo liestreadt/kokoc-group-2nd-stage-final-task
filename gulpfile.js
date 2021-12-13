@@ -13,30 +13,36 @@ const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
+const gulpif = require('gulp-if');
+
+const env = process.env.NODE_ENV;
+
+const {SRC_PATH, DIST_PATH, JS_LIBS, STYLES_LIBS} = require('./gulp.config')
 
 task('copyImg', () => {
-  return src('src/images/*.*')
-    .pipe(dest('dist/images/'))
+  return src(`${SRC_PATH}/images/*.*`)
+    .pipe(dest(`${DIST_PATH}/images/`))
 });
 
 task('copyVendors', () => {
-  return src(['src/js/vendors/**/*.*', '!src/js/vendors/slick/slick.js'])
-    .pipe(dest('dist/js/vendors/'))
+  return src([`${SRC_PATH}/js/vendors/**/*.*`, `!${SRC_PATH}/js/vendors/slick/slick.js`])
+    .pipe(dest(`${DIST_PATH}/js/vendors/`))
 });
 
 task('delImg', () => {
-  return del(['dist/images/*.*']);
+  return del([`${DIST_PATH}/images/*.*`]);
 });
 
 task('clean', () => {
-  return del('dist');
+  console.log(env);
+  return del(DIST_PATH);
 });
 
 task('server', (done) => {
   browserSync.init({
     watch: true,
     server: {
-      baseDir: './dist'
+      baseDir: `./${DIST_PATH}`
     }
   });
   done();
@@ -48,62 +54,58 @@ task('reload', (done) => {
 });
 
 task('compileScss', () => {
-  return src(['src/styles/main.scss',
-    '!src/js/vendors/slick/slick.css',
-    '!src/js/vendors/slick/slick-theme.css'
-  ])
-    .pipe(sourcemaps.init())
+  return src([...STYLES_LIBS,
+    "src/js/vendors/slick/slick.css",
+    "src/js/vendors/slick/slick-theme.css",])
+    .pipe(gulpif(env === 'dev', sourcemaps.init()))
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
-    .pipe(px2rem())
-    .pipe(autoprefixer())
-    .pipe(gcmq())
-    .pipe(cleanCSS({debug: true}, (details) => {
+    .pipe(gulpif(env === 'prod', px2rem()))
+    .pipe(gulpif(env === 'prod', autoprefixer()))
+    .pipe(gulpif(env === 'prod', gcmq()))
+    .pipe(gulpif(env === 'prod', cleanCSS({debug: true}, (details) => {
       console.log(`${details.name}: ${details.stats.originalSize}`);
       console.log(`${details.name}: ${details.stats.minifiedSize}`);
-    }))
-    .pipe(sourcemaps.write())
-    .pipe(dest('./dist/styles/'))
+    })))
+    .pipe(gulpif(env === 'dev', sourcemaps.write()))
+    .pipe(dest(`./${DIST_PATH}/styles/`))
     .pipe(browserSync.stream());
 });
 
 task('compilePug', () => {
-  return src('src/pug/pages/*.pug')
+  return src(`${SRC_PATH}/pug/pages/*.pug`)
     .pipe(pug({
       pretty: true,
     }))
-    .pipe(dest('dist'));
+    .pipe(dest(DIST_PATH));
 });
 
-const libs = [
-  'node_modules/jquery/dist/jquery.js',
-  'src/js/vendors/slick/slick.js',
-  'src/js/*.js',
-  'src/js/scripts/mainSlider.js',
-]
-
 task('scripts', () => {
-  return src(libs)
-    .pipe(sourcemaps.init())
+  return src([...JS_LIBS,
+    "src/js/vendors/slick/slick.js",
+    "src/js/scripts/mainSlider.js",
+    "src/js/*.js",])
+    .pipe(gulpif(env === 'dev', sourcemaps.init()))
     .pipe(concat('main.js'))
-    .pipe(babel({
+    .pipe(gulpif(env === 'prod', babel({
       presets: ['@babel/env']
-    }))
-    .pipe(uglify())
-    .pipe(rename('main.min.js'))
-    .pipe(sourcemaps.write())
-    .pipe(dest('dist/js'));
+    })))
+    .pipe(gulpif(env === 'prod', uglify()))
+    .pipe(gulpif(env === 'prod', rename('main.min.js')))
+    .pipe(gulpif(env === 'dev', sourcemaps.write()))
+    .pipe(dest(`${DIST_PATH}/js`));
 });
 
 task('watchers', (done) => {
-  watch('src/images/*', series("delImg", "copyImg", 'reload'));
-  watch('src/**/*.scss', series('compileScss'));
-  watch('src/**/*.pug', series('compilePug', 'reload'));
-  watch('src/js/*.js', series('scripts'));
+  watch(`${SRC_PATH}/images/*`, series("delImg", "copyImg", 'reload'));
+  watch(`${SRC_PATH}/**/*.scss`, series('compileScss'));
+  watch(`${SRC_PATH}/**/*.pug`, series('compilePug', 'reload'));
+  watch(`${SRC_PATH}/js/*.js`, series('scripts'));
   done();
 });
 
-task("build", series('clean', 'copyImg', 'copyVendors', 'scripts', 'compilePug', 'compileScss'));
-task("default", series('build', parallel('server', 'watchers')));
+task("build", series('clean', 'copyImg', 'copyVendors', parallel('compilePug', 'scripts', 'compileScss')));
+task("serve", series('build', parallel('server', 'watchers')));
+
 
 
