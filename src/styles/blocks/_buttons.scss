@@ -1,19 +1,7 @@
 @mixin makebutton($bg-color, $color, $radius) {
   background-color: $bg-color;
   color: $color;
-
-  &:hover {
-    background-color: lighten($bg-color, 10%);
-    cursor: pointer;
-  }
-
-  &:disabled:hover {
-    background-color: darken($bg-color, 30%);
-    cursor: default;
-  }
-
-  padding: 0.5em 1.2em;
-
+  padding: .5em 1.2em;
   font: {
     family: Georgia;
     size: $extralarge;
@@ -21,10 +9,18 @@
   border: {
     radius: $radius;
   }
+  :hover {
+    background-color: lighten($bg-color, 10%);
+    cursor: pointer;
+  }
+  :disabled:hover {
+    background-color: darken($bg-color, 30%);
+    cursor: default;
+  }
 }
 
 @mixin makeThemeButtons {
-  @each $status, $color in $themePallete {
+  @each $status, $color in $theme-pallete {
     &-#{$status} {
       @include makebutton($color, $white, 30px);
     }
@@ -32,7 +28,7 @@
 }
 
 @mixin makeButtonsSize {
-  @each $status, $size in $sizePallete {
+  @each $status, $size in $size-pallete {
     &-#{$status} {
       font: {
         size: $size;
@@ -43,8 +39,5 @@
 
 .button {
   @include makeThemeButtons;
-}
-
-.button {
   @include makeButtonsSize;
 }

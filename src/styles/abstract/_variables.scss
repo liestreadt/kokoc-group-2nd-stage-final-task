@@ -1,0 +1,30 @@
+$red: rgb(236, 20, 20);
+$blue: rgb(59, 133, 230);
+$hover-blue: rgb(0, 68, 255);
+$grey: rgb(233, 230, 220);
+$hover-grey: rgb(103, 103, 103);
+$border-grey: rgb(213, 213, 213);
+$white: #fff;
+$black: #000;
+$yellow: #ff0;
+$lime: rgb(204, 248, 204);
+
+$small: 14px;
+$large: 32px;
+$extralarge: 40px;
+$standard: 16px;
+$medium: 22px;
+
+$theme-pallete: (
+  'primary': #000,
+  'success': #27ba6c,
+  'info': #03a9f4,
+  'warning': #f83,
+  'danger': #ff1a1a,
+);
+
+$size-pallete: (
+  'small': $small,
+  'medium': $medium,
+  'big': $extralarge,
+);
