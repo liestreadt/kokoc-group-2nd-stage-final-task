@@ -1,0 +1,194 @@
+extends ../layout/baseLayout
+
+block variables
+  -
+    var bestServiceValues = [
+    'Search your specialist & Online consultations anywhere',
+    'Consultation our top specialists',
+    'Doctors are available 24/7',
+    ]
+
+block header
+  .navigation
+    .logo
+      p HEALTHCARE
+    .nav
+      .links
+        a(href='').link-home Home
+        a(href='') About
+        a(href='') Article
+        a(href='') Services
+      .btn-ready
+        a(href='').link-get-started
+          +button('', 'Get Started', 'info', '', false)
+block main
+  .section-hero
+    .service
+      .text-main
+        p Find And Search Your
+        p Suitable Doctors
+      .text-sub
+        p.
+          Join us and take care of yourself and your family with health
+          services that will make you feel confident and safe in your
+          daily life.
+      .searching
+        .searching-doctor
+          p Find your doctor
+        .searching-place
+          img(src='images/Icon.png')
+          p New York, USA
+          img(src='images/Arrow - Left 2.png')
+        a(href='')
+          +button('images/Search_button.png', '', 'info', 'medium', false)
+    .hero
+      img(src='images/doctor-centered.png' alt='Doctor (woman)')
+  .section-steps
+    p 3 Easy Steps and Get Your Solution
+    .services
+      .icons
+        img(src='images/search-icon.svg')
+        p Find best doctors
+        p.
+          Find your doctor easily with a minimum of effort. We've kept
+          everything organised for you
+      .icons
+        img(src='images/Appointment-icon.png')
+        p Get Appointment
+        p.
+          Ask for an appointment of the doctor quickly with almost a single
+          click. We take care of the rest.
+      .icons
+        img(src='images/Consultancy-icon.png')
+        p Happy Consultations
+        p.
+          Do consultations and take the service based on your appointment.
+          Get back to good health
+  .section-best-service
+    .best-service-img
+      img(src="images/quality-doctor.png" alt="Quality Doctor (man)")
+    .best-service-content
+      p Best quality service with our experience doctors
+      p.
+        With our top doctors, we are able to provide best medical services above
+        average We have highly experienced doctors, so don't worry They are also
+        very talented in their fields
+      ul
+        each val in bestServiceValues
+          li
+            span= val
+        else
+          li
+            span There are no values
+      a(href='')
+        +button('images/arrow-right.png', 'Explore specialists', 'info', '', false)
+  .section-our-service
+    p Our Service
+    p.
+      Our doctors have high qualified skills and are guaranteed to help you recover
+      from your disease.
+  .service-slider
+    .main-slider
+      +slider('images/heart.png', '1', 'Cardiology', 'Our cardiologists are skilled at  the diagnosing and treating diseases of the cardiovascular system.')
+      +slider('images/lungs-icon.svg', '2', 'Pulmonology', 'sda2')
+      +slider('images/pill.png', '3', 'Medicine', 'sda3')
+      +slider('images/heart.png', '1', 'Cardiology', 'Our cardiologists are skilled at  the diagnosing and treating diseases of the cardiovascular system.')
+      +slider('images/lungs-icon.svg', '2', 'Pulmonology', 'sda2')
+      +slider('images/pill.png', '3', 'Medicine', 'sda3')
+  .section-online-doctor
+    p Meet Our Certified Online Doctors
+    p.
+      Our online doctors have an average of 15 years experience and a 98% satisfaction
+      rating, they really set us apart!
+    .doctor-certified
+      +card('Doctor Linda', 'Dentist Specilist')
+      +card('Doctor Alisa', 'Carddiologist Specilist')
+      +card('Doctor Antony', 'Neurology Specilist')
+      +card('Doctor Khalid', 'Cancer Specilist')
+    .doctor-btn-explore
+      a(href='')
+        +button('', 'Explore All Doctors', 'info', '', false)
+  .section-app
+    .image-app
+    .app-info
+      p
+        |Mobile apps are available
+        |Get HealthCare for free!
+      p.
+        Get on-demand access to a doctor on your phone with the free HealthCare mobile
+        app. Download and register on our app for free and feel safe for all your family
+      .app-links-icon
+        a(href='')
+          img(src='images/play-store-btn.svg')
+        a(href='')
+          img(src='images/app-store-btn.svg')
+  .section-reviews
+    p Look our Clients have to say about us
+    .slider-reviews
+      .main-slider
+        +slider-reviews('images/alan.png', 'Alan', 'NY', 'asdsda')
+        +slider-reviews('images/alex.png', 'Alex', 'NY', 'asdsda')
+        +slider-reviews('images/dr tasnim.png', 'dr tasnim', 'NY', 'asdsda')
+        +slider-reviews('images/alan.png', 'Alan', 'NY', 'asdsda')
+        +slider-reviews('images/alex.png', 'Alex', 'NY', 'asdsda')
+        +slider-reviews('images/dr tasnim.png', 'dr tasnim', 'NY', 'asdsda')
+  .section-book
+    .book-info
+      h2 It’s time change your life today
+      a(href='')
+        +button('', 'Book an Appointment', 'info', 'small', false)
+    .book-image
+      img(src='images/smiling-young-female-doctor.png' alt='')
+
+block footer
+  .foot-1
+    h1 HEALTHCARE
+    p Metairie, 3689  Bassel Street, LA, Louisiana
+    p Contact us: 225-788-5489
+    .socials
+      a(href='')
+        img(src='images/facebook.png')
+      a(href='')
+        img(src='images/instagram.png')
+      a(href='')
+        img(src='images/twitter.png')
+      a(href='')
+        img(src='images/youtube.png')
+  .foot-2
+    a(href='')
+      h3 Category
+    a(href='')
+      p Home
+    a(href='')
+      p About
+    a(href='')
+      p Services
+    a(href='')
+      p Reviews
+    a(href='')
+      p Article
+  .foot-3
+    a(href='')
+      h3 About
+    a(href='')
+      p Partners
+    a(href='')
+      p Careers
+    a(href='')
+      p Press
+    a(href='')
+      p Community
+  .foot-4
+    h3 Subscribe newsletter
+    p Sign up for tips, new destinations, and exclusive promos.
+  .info-rights
+    p © 2021 Healthcare - All rights reserved.
+      a(href='')
+        p Privacy
+      a(href='')
+        p Security
+      a(href='')
+        p Terms
+
+
+

@@ -1,0 +1,486 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:wght@300;700&display=swap');
+
+:root {
+    --primary-color: #40A3F8;
+    --heading-color: #3E3E3E;
+    --text-color: #909090;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to left, #9cd1ff6e, rgb(221, 244, 255), #bce0ff52);
+}
+
+img {
+    max-width: 100%;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+    color: var(--heading-color);
+    margin: 1.6rem 0;
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+
+h2 {
+    font-size: 3.2rem;
+}
+
+h3 {
+    font-size: 2.2rem;
+}
+
+p {
+    color: var(--text-color);
+    font-size: 1.6rem;
+    margin: 1.6rem 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1.6rem;
+}
+
+.container {
+    max-width: 90%;
+    margin: auto;
+}
+
+/* buttons */
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: .4rem;
+    font-size: 1.6rem;
+    margin: 1.6rem 0;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    margin-left: 1rem;
+}
+@media (min-width:768px) {
+    /* container  */
+    .container{
+        max-width: 85%;
+    }
+    h1 {
+        font-size: 4.8rem;
+    }
+
+    h2 {
+        font-size: 4.2rem;
+    }
+
+    h3 {
+        font-size: 3.2rem;
+    }
+    
+}
+
+/*navigation*/
+
+.navigation{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.logo p{
+    font-weight: bold;
+    color: var(--primary-color);
+}
+nav a{
+    padding-right: 1rem;
+    color: var(--heading-color);
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+.nav-btn{
+    display: none;
+}
+
+/* hero section  */
+
+.hero-content{
+    margin: 6rem 0; 
+}
+.hero-image{
+    text-align: center;
+}
+.hero-image img{
+    max-width: 80%;    
+}
+
+/* 3 easy steps  */
+.service h2{
+    text-align: center;
+    margin-top: 7rem;
+}
+.service-section{
+    text-align: center;
+}
+.service{
+    
+    margin: 0 auto;
+}
+.service img{
+    width:10rem ;
+}
+.service h4{
+    font-size: 2rem;
+    color: var(--heading-color);
+}
+.service p{
+    font-size: 1.4rem;
+    color: var(--text-color);
+    padding: 0 4rem;
+}
+
+/* best quality services  */
+.best-service-section{
+    margin-top: 6rem;
+}
+
+.best-service-content ul{
+    list-style: none;
+    margin-bottom: 1rem;
+}
+.best-service-content ul li i{
+    color: var(--primary-color);
+    padding-right: .7rem;
+    padding-bottom: .5rem;
+
+}
+.best-service-content ul li{
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+/* our service  */
+.our-service h2{
+    margin-top: 4rem;
+    text-align: center;
+
+}
+.our-service p{
+    text-align: center;
+    padding-bottom: 3rem;
+}
+
+.service-box{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+     
+    
+}
+.service-content{
+    margin: 2rem auto; 
+    width: 68%;
+    background:white;
+    border-radius: .8rem;
+    margin-bottom: 3rem;
+}
+.service-content img{
+    padding: 3rem;
+}
+.service-content h4{
+    margin: .6rem;
+    font-size: 1.8rem;
+    color: var(--heading-color);
+}
+.service-content p{
+    font-size: 1.6rem;
+    color: var(--text-color);
+    padding: 0 2rem 4rem 2rem ;
+}
+
+.service-content:nth-child(2){
+    border-bottom: 1rem solid var(--primary-color);
+}
+  /* online doctors  */
+  .online-doctor-box h2{
+      margin-top:9rem ;
+      text-align: center;
+  }
+  .online-doctor-box p{
+      text-align: center;
+      margin-bottom: 7rem;
+      
+  }
+  .all-doc{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .doctor-content{
+      background: white;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .doctor-content img{
+        border-bottom: 1rem solid var(--primary-color);
+        
+    }
+    .doctor-content h4{
+        font-size: 1.5rem;
+        padding: 1rem 0;
+    }
+    .social-icon i{
+        color: var(--primary-color);
+        font-size: 2rem;
+        margin-bottom: 1.4rem;
+        padding-right: .7rem;
+
+    }
+    
+    .explore-btn{
+        text-align: center;
+        margin-bottom: 6rem;
+    }
+
+    /* mobile section  */
+    .mobile-section{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .mobile-content p{
+        margin: 2rem 2rem 3.5rem 2rem;
+
+    }
+    /* booking section  */
+    .booking-section{
+        display: flex;
+        flex-direction: column;
+    }
+    .booking-content{
+        margin-top: 4rem;
+        text-align: center;
+    }
+    .booking-img{
+        margin-top: 2rem;
+        background: var(--primary-color);
+        border-radius: 3rem;
+        border-bottom: 1rem solid seagreen;
+    }
+    
+    /* footer section  */
+    .footer-section{
+        margin-top: 6rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .foot1 p{
+        font-size: 2rem;
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+    .foot1 h5{
+        font-size: 1.4rem;
+        color: var(--text-color);
+        padding-bottom: 1rem;
+    }
+    .foot2{
+        padding-top: 2rem;
+    }
+    .mid-foot h4{
+        font-size: 1.6rem;
+        color: var(--text-color);
+        padding-bottom: 1rem;
+    }
+    .mid-foot uL{
+        padding-bottom: 2rem;
+    }
+    .mid-foot ul li{
+        list-style: none;
+        font-size: 1.3rem;
+        color: var(--text-color);
+        padding-bottom: .3rem;
+    }
+    .foot4 h4{
+        margin-top: 1rem;
+        font-size: 2rem;
+        color: var(--heading-color);
+    }
+    .foot4 p{
+        font-size: 1.5rem;
+        color: var(--text-color);
+    }
+    .foot4 input{
+        font-family: roboto;
+        padding: 1rem;
+        box-sizing: border-box;
+        
+    }
+
+
+
+@media (min-width:768px) {
+    /* navigation  */
+    .logo p{
+        font-size: 2rem;
+    }
+    nav a{
+        padding-right: 4rem;
+        font-weight: 500px;
+        color: var(--text-color);
+        font-family: 'Roboto', sans-serif;
+    }
+    /* hero section  */
+    .hero-section{
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        margin-top: 4rem;
+    }
+    .hero-content{
+        margin-top: 15rem;
+    }
+
+    /* 3 easy steps  */
+    .service-section{
+        margin-top: 7rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    /* best quality service  */
+    .best-service-section{
+        display: flex;
+        justify-content: space-between;
+    }
+    .best-service-img img{
+        width: 1200px;
+    }
+    .best-service-content{
+        margin-top: 12rem;
+        margin-left: 6rem;
+    }
+
+    /* our service section  */
+    .service-box{
+        flex-direction: row;
+       gap: 3rem;
+    }
+
+    /* online doctors  */
+    .all-doc{
+        margin: 5rem ;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    /* mobile section  */
+    .mobile-section{
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+    }
+    .mobile-content{
+        margin-top:7rem ;
+        display: flex;
+        flex-direction: column;
+    }
+    .mobile-content p{
+        padding: 0 8rem;
+    }
+
+    /* booking section  */
+    .booking-section{
+        margin-top: 22rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: var(--primary-color);
+    }
+    .booking-content{
+        margin-top: 4rem;
+        
+    }
+    .booking-content h2{
+        color: white;
+        padding: 0 4rem;
+    }
+    .booking-content .btn{
+        background: white;
+        color:var(--heading-color);
+        font-weight: bold;
+        
+    }
+    .booking-img{
+        background: none;
+        border: none;
+        margin-top: -23rem;
+    }
+    /* footer section  */
+    .footer-section{
+        margin-top: 6rem;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 2fr;
+    }
+    .foot1 p{
+        font-size: 2rem;
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+    .foot1 h5{
+        font-size: 1.4rem;
+        color: var(--text-color);
+        padding-bottom: 1rem;
+    }
+    .mid-foot h4{
+        font-size: 1.6rem;
+        color: var(--text-color);
+        padding-bottom: 1rem;
+    }
+    .mid-foot ul li{
+        list-style: none;
+        font-size: 1.3rem;
+        color: var(--text-color);
+        padding-bottom: .3rem;
+    }
+    .foot4 h4{
+        font-size: 2rem;
+        color: var(--heading-color);
+    }
+    .foot4 p{
+        font-size: 1.5rem;
+        color: var(--text-color);
+    }
+    .foot4 input{
+        font-family: roboto;
+        padding: 1rem;
+        box-sizing: border-box;
+        
+    }
+
+
+
+}
+
+
