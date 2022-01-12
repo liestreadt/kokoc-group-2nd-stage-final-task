@@ -56,12 +56,6 @@ task('reload', (done) => {
 task('compileScss', () => {
   return src([...VENDOR_LIBS,
     ...STYLES_LIBS,])
-    .pipe(sassLint({
-      files: {ignore: [...VENDOR_LIBS]},
-      configFile: '.sass-lint.yml'
-    }))
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
     .pipe(gulpif(env === 'dev', sourcemaps.init()))
     .pipe(sassGlob())
     .pipe(sass().on('error', sass.logError))
@@ -77,7 +71,7 @@ task('compileScss', () => {
     .pipe(browserSync.stream());
 });
 
-task('lint-check', () => {
+task('lintScss', () => {
   return src(`${SRC_PATH}/styles/**/*.scss`)
   .pipe(sassLint({
     configFile: '.sass-lint.yml'
@@ -112,13 +106,20 @@ task('scripts', () => {
 
 task('watchers', (done) => {
   watch(`${SRC_PATH}/images/*`, series("delImg", "copyImg", 'reload'));
-  watch(`${SRC_PATH}/**/*.scss`, series('compileScss'));
+  watch(`${SRC_PATH}/**/*.scss`, series('lintScss', 'compileScss'));
   watch(`${SRC_PATH}/**/*.pug`, series('compilePug', 'reload'));
   watch(`${SRC_PATH}/js/*.js`, series('scripts'));
   done();
 });
 
-task("build", series('clean', 'copyImg', 'copyVendors', parallel('compilePug', 'scripts', 'compileScss'), 'lint-check'));
+task("build", series(
+  'clean',
+  parallel(series('lintScss', 'compileScss')),
+  'copyImg',
+  'copyVendors',
+  'compilePug',
+  'scripts',
+));
 task("serve", series('build', parallel('server', 'watchers')));
 
 
