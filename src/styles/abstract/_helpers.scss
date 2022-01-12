@@ -1,17 +1,17 @@
-@use "sass:math";
+@use 'sass:math';
 
 @function px2em($pixels, $context) {
-    @if (unitless($pixels)) {
-        $pixels: $pixels * 1px;
-      }
+  @if (unitless($pixels)) {
+    $pixels: $pixels * '1px';
+  }
 
-      @if (unitless($context)) {
-        $context: $context * 1px;
-      }
+  @if (unitless($context)) {
+    $context: $context * '1px';
+  }
 
-    @return math.div($pixels, $context) * 1em;
-}
+  @return math.div($pixels, $context) * '1em';
+};
 
 @function px2rem($pixels) {
-    @return math.div($pixels, $standard) * 1rem;
-}
+  @return math.div($pixels, $standard) * '1rem';
+};

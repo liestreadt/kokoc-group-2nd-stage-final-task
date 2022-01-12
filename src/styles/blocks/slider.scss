@@ -1,23 +1,18 @@
 .Img {
-    width: 100%;
+  width: 100%;
 }
 
 .container {
-    max-width: 50%;
-    margin: auto auto;
-    padding: 0 10px;
+  max-width: 50%;
+  margin: 10px auto;
+  padding: 0 10px;
 }
 
 .slick-track {
-    display: flex;
-    align-items: flex-start;
-}
-
-.slick-prev:before,
-.slick-next:before {
-    color: black;
+  display: flex;
+  align-items: flex-start;
 }
 
 .slick-dots {
-    margin: 10px auto;
+  margin: 15px auto;
 }
