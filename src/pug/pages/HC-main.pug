@@ -7,10 +7,37 @@ block variables
     'Consultation our top specialists',
     'Doctors are available 24/7',
     ]
+  -
+    var review = [
+      {
+        name: 'Alan Zara dilan',
+        photo: 'images/alan.png',
+        location: 'New York, America, USA',
+        message: 'Telehealth is fueled by digital technologies and DocTime telemedicine'
+        + 'app has brought a great revolution in medical services specially an overpopulated'
+        + 'country where virtual chamber can create at anywhere thoughout country',
+      },
+      {
+        name: 'Alex Maxwell',
+        photo: 'images/alex.png',
+        location: 'San Francisco, USA',
+        message: 'I visited my PCP for abdominal pain. My doctor told me that I need to see'
+        + 'Gastroenterologist. Earlier I used to call multiple offices to schedule an'
+        + 'appointment that suites my time.',
+      },
+      {
+        name: 'Dr. Tasnim zara',
+        photo: 'images/dr tasnim.png',
+        location: 'Los Angeles, USA',
+        message: 'HealthCare is enlightens my superpower each and every time...!'
+        + 'I find DocTime a brand-able telemedicine platform with virtual waiting room,'
+        + 'video consultation, e-prescription, beautifully planned user interface. Thank you :)',
+      },
+    ]
 
 block header
   .navigation
-    .logo
+    .logo.logo-health
       p HEALTHCARE
     .nav
       .links
@@ -90,21 +117,21 @@ block main
   .service-slider
     .main-slider
       +slider('images/heart.png', '1', 'Cardiology', 'Our cardiologists are skilled at  the diagnosing and treating diseases of the cardiovascular system.')
-      +slider('images/lungs-icon.svg', '2', 'Pulmonology', 'sda2')
-      +slider('images/pill.png', '3', 'Medicine', 'sda3')
+      +slider('images/lungs-icon.svg', '2', 'Pulmonology', 'Our Pulmonologist are skilled at  diagnosing treating diseases of the Pulmonology system.')
+      +slider('images/pill.png', '3', 'Medicine', 'Our medcine doctor are skilled at  diagnosing treating diseases of the  latest medicne system.')
       +slider('images/heart.png', '1', 'Cardiology', 'Our cardiologists are skilled at  the diagnosing and treating diseases of the cardiovascular system.')
-      +slider('images/lungs-icon.svg', '2', 'Pulmonology', 'sda2')
-      +slider('images/pill.png', '3', 'Medicine', 'sda3')
+      +slider('images/lungs-icon.svg', '2', 'Pulmonology', 'Our Pulmonologist are skilled at  diagnosing treating diseases of the Pulmonology system.')
+      +slider('images/pill.png', '3', 'Medicine', 'Our medcine doctor are skilled at  diagnosing treating diseases of the  latest medicne system.')
   .section-online-doctor
     p Meet Our Certified Online Doctors
     p.
       Our online doctors have an average of 15 years experience and a 98% satisfaction
       rating, they really set us apart!
     .doctor-certified
-      +card('Doctor Linda', 'Dentist Specilist')
-      +card('Doctor Alisa', 'Carddiologist Specilist')
-      +card('Doctor Antony', 'Neurology Specilist')
-      +card('Doctor Khalid', 'Cancer Specilist')
+      +card('Dr Amanda Linda ', 'Dentist Specilist')
+      +card('Dr. Alisa Rahman', 'Carddiologist Specilist')
+      +card('Dr. Anthony Fauci', 'Neurology Specilist')
+      +card('Dr. Khalid Abbed', 'Cancer Specilist')
     .doctor-btn-explore
       a(href='')
         +button('', 'Explore All Doctors', 'info', '', false)
@@ -123,72 +150,72 @@ block main
         a(href='')
           img(src='images/app-store-btn.svg')
   .section-reviews
-    p Look our Clients have to say about us
+    p.review-header Look our Clients have to say about us
     .slider-reviews
       .main-slider
-        +slider-reviews('images/alan.png', 'Alan', 'NY', 'asdsda')
-        +slider-reviews('images/alex.png', 'Alex', 'NY', 'asdsda')
-        +slider-reviews('images/dr tasnim.png', 'dr tasnim', 'NY', 'asdsda')
-        +slider-reviews('images/alan.png', 'Alan', 'NY', 'asdsda')
-        +slider-reviews('images/alex.png', 'Alex', 'NY', 'asdsda')
-        +slider-reviews('images/dr tasnim.png', 'dr tasnim', 'NY', 'asdsda')
+        +slider-reviews(review[0].photo, review[0].name, review[0].location, review[0].message)
+        +slider-reviews(review[1].photo, review[1].name, review[1].location, review[1].message)
+        +slider-reviews(review[2].photo, review[2].name, review[2].location, review[2].message)
+        +slider-reviews(review[0].photo, review[0].name, review[0].location, review[0].message)
+        +slider-reviews(review[1].photo, review[1].name, review[1].location, review[1].message)
+        +slider-reviews(review[2].photo, review[2].name, review[2].location, review[2].message)
   .section-book
     .book-info
-      h2 It’s time change your life today
+      p It’s time change your life today
       a(href='')
-        +button('', 'Book an Appointment', 'info', 'small', false)
+        +button('', 'Book an Appointment', 'info', '', false)
     .book-image
       img(src='images/smiling-young-female-doctor.png' alt='')
-
 block footer
-  .foot-1
-    h1 HEALTHCARE
-    p Metairie, 3689  Bassel Street, LA, Louisiana
-    p Contact us: 225-788-5489
-    .socials
+  .section-footer
+    .foot-contacts
+      p.logo-health HEALTHCARE
+      p.dm-sans Metairie, 3689  Bassel Street, LA, Louisiana
+      p.dm-sans Contact us: 225-788-5489
+      .foot-socials
+        a(href='')
+          img(src='images/facebook.png')
+        a(href='')
+          img(src='images/instagram.png')
+        a(href='')
+          img(src='images/twitter.png')
+        a(href='')
+          img(src='images/youtube.png')
+    .foot-service
       a(href='')
-        img(src='images/facebook.png')
+        p.foot-main Category
       a(href='')
-        img(src='images/instagram.png')
+        p Home
       a(href='')
-        img(src='images/twitter.png')
+        p About
       a(href='')
-        img(src='images/youtube.png')
-  .foot-2
-    a(href='')
-      h3 Category
-    a(href='')
-      p Home
-    a(href='')
-      p About
-    a(href='')
-      p Services
-    a(href='')
-      p Reviews
-    a(href='')
-      p Article
-  .foot-3
-    a(href='')
-      h3 About
-    a(href='')
-      p Partners
-    a(href='')
-      p Careers
-    a(href='')
-      p Press
-    a(href='')
-      p Community
-  .foot-4
-    h3 Subscribe newsletter
-    p Sign up for tips, new destinations, and exclusive promos.
-  .info-rights
-    p © 2021 Healthcare - All rights reserved.
+        p Services
       a(href='')
-        p Privacy
+        p Reviews
       a(href='')
-        p Security
+        p Article
+    .foot-about
       a(href='')
-        p Terms
+        p.foot-main About
+      a(href='')
+        p Partners
+      a(href='')
+        p Careers
+      a(href='')
+        p Press
+      a(href='')
+        p Community
+    .foot-news
+      p.dm-sans Subscribe newsletter
+      p.dm-sans Sign up for tips, new destinations, and exclusive promos.
+    .foot-rights.dm-sans
+      p.rights-logo © 2021 Healthcare - All rights reserved.
+      a(href='')
+        p.rights-privacy Privacy
+      a(href='')
+        p.rights-security Security
+      a(href='')
+        p.rights-terms Terms
 
 
 

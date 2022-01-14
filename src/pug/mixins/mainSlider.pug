@@ -6,13 +6,17 @@ mixin slider(img, img_number, name, text)
 
 mixin slider-reviews(img, name, location, message)
   .main-slider__item
-    .slider-revies-info
-      img(src=img)
-      .slider-reviews-name
-        p #{name}
-      .slider-reviews-location
-        p #{location}
-    .slider-reviews-rate
-      p 
-    .slider-reviews-message
-      p #{message}
+    img(src='images/quote.svg' class='img-quote')
+    .slider-reviews-slide
+      .slider-reviews-img
+        img(src=img)
+      .slider-reviews-info
+        .slider-reviews-name
+          p #{name}
+        .slider-reviews-location
+          p #{location}
+      .slider-reviews-rate
+        - for (var x = 0; x < 5; x++)
+          div(class='fas fa-star')
+      .slider-reviews-message
+        p #{message}
