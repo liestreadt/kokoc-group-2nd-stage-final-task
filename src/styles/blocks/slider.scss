@@ -1,11 +1,148 @@
-.Img {
-  width: 100%;
+.service-slider {
+  max-width: 1240px;
+  margin: 81px auto 0;
+  .main-slider {
+    margin-left: 4px;
+  }
+  .main-slider__item {
+    display: grid !important;
+    grid-template-rows: 1fr 1fr 1fr !important;
+    justify-items: center;
+    justify-content: center !important;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 349px;
+    height: 316px !important;
+    background-color: $white;
+    img {
+      max-width: 100%;
+      &.img-slider-1 {
+        position: relative;
+        top: 61px;
+      }
+      &.img-slider-2 {
+        position: relative;
+        top: 59px;
+      }
+      &.img-slider-3 {
+        position: relative;
+        top: 55px;
+      }
+    }
+    p {
+      font-family: Roboto;
+      font-style: normal;
+      text-align: center;
+      color: $grey-text;
+      &:nth-child(2) {
+        position: relative;
+        top: 28px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 30px;
+        color: $black;
+      }
+      &:nth-child(3) {
+        max-width: 250px;
+        font-size: 14px;
+        margin-top: -5px;
+        line-height: 22px;
+      }
+    }
+  }
 }
 
-.container {
-  max-width: 50%;
-  margin: 10px auto;
-  padding: 0 10px;
+// * section - reviews
+
+.section-reviews {
+  max-width: 1440px;
+  margin: 162px auto 0;
+  .review-header {
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 49px;
+    letter-spacing: .02em;
+    color: $black-service;
+  }
+  .slider-reviews {
+    margin: 50px auto 0;
+    max-width: 1220px;
+    .main-slider {
+      width: 100%;
+    }
+    .main-slider__item {
+      max-width: 373px;
+      height: 391px;
+      .img-quote {
+        position: relative;
+        top: 29px;
+        left: 310px;
+      }
+      .slider-reviews-slide {
+        max-width: 373px;
+        height: 350px;
+        display: grid !important;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: 1fr .5fr 2fr;
+        margin: 0 auto;
+        background-color: $white;
+        border-radius: 20px;
+        .slider-reviews-img {
+          grid-column: 1 / 3;
+          justify-self: center;
+          margin-top: 25px;
+          img {
+            border-radius: 50px;
+          }
+        }
+        .slider-reviews-info {
+          margin-left: 45px;
+          p {
+            margin: 0;
+          }
+          .slider-reviews-name {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 55px;
+            color: $black-service;
+          }
+          .slider-reviews-location {
+            font-family: Ubuntu;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 25px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, $blue-button, $text-location);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: $blue-button;
+          }
+        }
+        .slider-reviews-rate {
+          margin: 16px auto 0;
+          .fa-star {
+            font-size: 11px;
+            margin: 0 -1px 0 -1.5px;
+            color: $rate-star;
+          }
+        }
+        .slider-reviews-message {
+          margin-left: 45px;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 25px;
+          color: $black-review;
+          grid-column: 1 / 3;
+          max-width: 300px;
+        }
+      }
+    }
+}
 }
 
 .slick-track {
@@ -14,5 +151,36 @@
 }
 
 .slick-dots {
-  margin: 15px auto;
+  position: relative;
+  top: 88px;
+  li {
+    button {
+      &::before {
+        background-color: $blue-button;
+        content: '';
+        width: 18px;
+        height: 18px;
+        border-radius: 20px;
+      }
+    }
+    &.slick-active {
+      button::before {
+        width: 28px;
+        margin-left: -5px;
+      }
+    }
+  }
+}
+
+.slick-prev {
+  top: 56%;
+  left: -78px;
+  width: 95px;
+  height: 110px;
+}
+.slick-next {
+  top: 56%;
+  right: -78px;
+  width: 70px;
+  height: 70px;
 }

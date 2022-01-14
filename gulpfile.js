@@ -24,6 +24,16 @@ task('copyImg', () => {
     .pipe(dest(`${DIST_PATH}/images/`));
 });
 
+task('copyCss', () => {
+  return src(`${SRC_PATH}/styles/style.css`)
+  .pipe(dest(`${DIST_PATH}/styles/`));
+})
+
+task('copyIndex', () => {
+  return src(`${SRC_PATH}/indexHC.html`)
+  .pipe(dest(`${DIST_PATH}`));
+})
+
 task('copyVendors', () => {
   return src([`${SRC_PATH}/js/vendors/**/*.*`, `!${SRC_PATH}/js/vendors/slick/slick.js`])
     .pipe(dest(`${DIST_PATH}/js/vendors/`));
@@ -42,7 +52,8 @@ task('server', (done) => {
   browserSync.init({
     watch: true,
     server: {
-      baseDir: `./${DIST_PATH}`
+      baseDir: `./${DIST_PATH}`,
+      index: 'HC-main.html'
     }
   });
   done();
@@ -108,7 +119,7 @@ task('watchers', (done) => {
   watch(`${SRC_PATH}/images/*`, series("delImg", "copyImg", 'reload'));
   watch(`${SRC_PATH}/**/*.scss`, series('lintScss', 'compileScss'));
   watch(`${SRC_PATH}/**/*.pug`, series('compilePug', 'reload'));
-  watch(`${SRC_PATH}/js/*.js`, series('scripts'));
+  watch(`${SRC_PATH}/js/**/*.js`, series('scripts'));
   done();
 });
 

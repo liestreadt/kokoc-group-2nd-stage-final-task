@@ -4,12 +4,10 @@
   border: 4px solid $border-grey;
   background-color: $white;
   width: 15em;
-
   .card__image {
     display: block;
     border-bottom: 4px solid $border-grey;
   }
-
   .card__info {
     font-family: sans-serif;
     padding: 1em;
@@ -19,27 +17,22 @@
       font-weight: bold;
       margin: 0;
     }
-
     .card__info__list {
       color: $hover-grey;
     }
-
     .card__info__price {
       font-size: x-large;
     }
-
     ul {
       margin-top: .5em;
       margin-bottom: .5em;
       padding: 0;
     }
-
     li {
       padding: 0;
       list-style-type: none;
     }
   }
-
   .Img {
     display: block;
     margin-left: auto;
