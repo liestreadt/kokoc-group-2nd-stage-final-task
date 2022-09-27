@@ -1,0 +1,55 @@
+// * block header
+
+.logo-health {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 31.635px;
+  line-height: 47px;
+  color: $blue-button;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  margin-top: -21px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  .logo {
+    margin-left: 135px;
+    margin-top: 5px;
+  }
+  .nav {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    align-items: center;
+    .links {
+      display: flex;
+      justify-content: space-between;
+      margin-left: 27px;
+      margin-right: 48px;
+      margin-top: -5px;
+      .link-home {
+        color: $blue-button;
+        opacity: 1;
+      }
+      a {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        color: $black-service;
+        mix-blend-mode: normal;
+        opacity: .4;
+      }
+    }
+    .btn-ready {
+      display: flex;
+      align-items: center;
+      margin-top: -10px;
+    }
+  }
+}

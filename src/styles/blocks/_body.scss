@@ -13,18 +13,8 @@ a {
   }
   &:hover {
     text-decoration: none;
+    opacity: 70% !important;
   }
-}
-
-// * block header
-
-.logo-health {
-  font-family: 'Rubik';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 31.635px;
-  line-height: 47px;
-  color: $blue-button;
 }
 
 .dm-sans {
@@ -34,55 +24,9 @@ a {
   font-size: 14px;
   line-height: 180%;
   color: $hover-grey;
-
 }
 
-.navigation {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
-  margin-top: -21px;
-  max-width: 1440px;
-  margin-left: auto;
-  margin-right: auto;
-  .logo {
-    margin-left: 135px;
-    margin-top: 5px;
-  }
-  .nav {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    align-items: center;
-    .links {
-      display: flex;
-      justify-content: space-between;
-      margin-left: 27px;
-      margin-right: 48px;
-      margin-top: -5px;
-      .link-home {
-        color: $blue-button;
-        opacity: 1;
-      }
-      a {
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
-        line-height: 24px;
-        color: $black-service;
-        mix-blend-mode: normal;
-        opacity: .4;
-      }
-    }
-    .btn-ready {
-      display: flex;
-      align-items: center;
-      margin-top: -10px;
-    }
-  }
-}
-
-// * block main
+// // * block main
 
 // * section - hero
 
@@ -177,13 +121,15 @@ a {
           }
         }
       a {
+        width: fit-content;
+        height: fit-content;
+        margin-left: 32px;
+        margin-top: 13px;
         button {
           padding: 0;
           height: 59px;
           width: 70px;
           border-radius: 8px;
-          margin-left: 32px;
-          margin-top: 13px;
           img {
             margin: auto;
             margin-top: 5px;
@@ -335,19 +281,23 @@ a {
         }
       }
     }
-    button {
-      margin: 5px 0 0 -4px;
-      width: 200px;
-      height: 50px;
-      font-size: 16px;
-      line-height: 30px;
-      letter-spacing: .02em;
-      color: $white;
-      padding: 0 0 4px 3px;
-      img {
-        position: relative;
-        top: 7px;
-        left: -2px;
+    a {
+      width: fit-content;
+      height: fit-content;
+      button {
+        margin: 5px 0 0 -4px;
+        width: 200px;
+        height: 50px;
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: .02em;
+        color: $white;
+        padding: 0 0 4px 3px;
+        img {
+          position: relative;
+          top: 7px;
+          left: -2px;
+        }
       }
     }
   }
@@ -472,9 +422,6 @@ a {
         max-width: 125px;
         margin: 0 auto;
         justify-items: center;
-        a:hover {
-          opacity: 50%;
-        }
       }
       p {
         font-style: normal;
@@ -536,9 +483,6 @@ a {
     .app-links-icon {
       margin-top: 44px;
       a {
-        &:hover {
-          opacity: 70%;
-        }
         &:nth-child(2) {
           position: relative;
           left: 13px;
@@ -584,82 +528,4 @@ a {
   img {
     margin-left: 75px;
   }
-}
-
-.section-footer {
-  max-width: 1440px;
-  margin: 122px auto 0;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 2fr;
-  grid-template-rows: 4fr 2fr;
-  background-image: url('../images/white-image.svg');
-  background-size: 1440px;
-  background-repeat: no-repeat;
-  .foot-contacts {
-    margin: 0 0 0 139px;
-    p:nth-child(1) {
-      margin-bottom: -1px;
-    }
-    .foot-socials {
-      margin: 16px 0 0 -8px;
-      a {
-        margin: 0 8px;
-        &:hover {
-          opacity: 50%;
-        }
-      }
-    }
-  }
-  .foot-service {
-    margin: 25px 0 0 158px;
-    p {
-      margin-bottom: 19px;
-      color: $hover-grey;
-    }
-  }
-  .foot-about {
-    margin: 25px 0 0 98px;
-    p {
-      margin-bottom: 19px;
-      color: $hover-grey;
-      font-weight: 100;
-    }
-  }
-  .foot-news {
-    margin: 20px 0 0 54px;
-    p:nth-child(1) {
-      font-weight: bold;
-      font-size: 16px;
-    }
-    p:nth-child(2) {
-      max-width: 300px;
-      margin-top: -4px;
-    }
-  }
-  .foot-rights {
-    max-width: 1340px;
-    grid-column: 1 / 5;
-    display: grid;
-    grid-template-columns: 10fr 1fr 1fr 1fr;
-    margin-top: 17px;
-    .rights-logo {
-      margin-left: 150px;
-    }
-    .rights-privacy {
-      color: $hover-grey;
-      margin-left: 11px;
-    }
-    .rights-security {
-      color: $hover-grey;
-      margin-left: 8px;
-    }
-    .rights-terms {
-      color: $hover-grey;
-      margin-left: 13px;
-    }
-  }
-}
-
-.foot-main {
-  color: $black !important;
 }
